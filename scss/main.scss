@@ -1,0 +1,77 @@
+@import "variables";
+@import "mixins";
+
+.page {
+    min-height: 100vh;
+    background: $main-bg url("../img/snow.png") repeat;
+    color: $text-color;
+    font-family: "Arial", sans-serif;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+
+    &__title {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    &__subtitle {
+        font-size: 1.2rem;
+        opacity: .9;
+    }
+}
+
+.card {
+    @include center;
+    flex-direction: column;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 30px;
+    border-radius: $radius;
+    backdrop-filter: blur(6px);
+    max-width: 400px;
+    margin: auto;
+
+    &__image-wrapper {
+        @include center;
+    }
+
+    &__image {
+        width: 180px;
+    }
+
+    &__message {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+}
+
+.button {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border-radius: $radius;
+    cursor: pointer;
+    border: none;
+    transition: .3s;
+
+    &--primary {
+        background: $accent;
+        color: #000;
+
+        &:hover {
+            background: darken($accent, 10%);
+        }
+    }
+}
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+
+    &__copy {
+        opacity: .8;
+    }
+}
