@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новорічна листівка 2025</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page">
+        <div class="page__background"></div>
+        
+        <div class="snowflakes" id="snowflakes"></div>
+
+        <div class="container">
+            <div class="card">
+                <div class="card__header">
+                    <h1 class="card__title">З Новим 2025 Роком!</h1>
+                    <p class="card__subtitle">Нехай магія свят наповнить ваше життя</p>
+                </div>
+
+                <div class="card__content">
+                    <div class="card__decoration">
+                        <span class="icon icon--tree">🎄</span>
+                        <span class="icon icon--gift">🎁</span>
+                        <span class="icon icon--star">⭐</span>
+                    </div>
+
+                    <p class="card__text">
+                        Від щирого серця вітаємо вас із найчарівнішим святом року! 
+                        Нехай Новий рік принесе в ваш дім затишок, тепло та радість.
+                    </p>
+
+                    <div class="wishes">
+                        <ul class="wishes__list">
+                            <li class="wishes__item">✨ Здоров'я міцного вам і вашим близьким</li>
+                            <li class="wishes__item">💫 Успіхів у всіх починаннях</li>
+                            <li class="wishes__item">🌟 Здійснення найзаповітніших мрій</li>
+                            <li class="wishes__item">🎊 Незабутніх вражень та яскравих емоцій</li>
+                            <li class="wishes__item">❤️ Любові, щастя та достатку</li>
+                        </ul>
+                    </div>
+
+                    <button class="button" onclick="showMessage()">
+                        Отримати новорічне побажання
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2025 Новорічна листівка. Створено з любов'ю ❤️</p>
+        </footer>
+    </div>
+
+    <script>
+        // Створення сніжинок
+        const snowflakesContainer = document.getElementById('snowflakes');
+        const snowflakeSymbols = ['❄', '❅', '❆'];
+        
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflakes__item';
+            snowflake.textContent = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
+            snowflake.style.left = Math.random() * 100 + '%';
+            snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = (Math.random() * 1 + 0.5) + 'em';
+            
+            snowflakesContainer.appendChild(snowflake);
+            
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+        
+        setInterval(createSnowflake, 200);
+        
+        // Показати повідомлення
+        const messages = [
+            'Нехай ця ніч буде магічною! ✨',
+            'Бажаємо вам чарівних свят! 🎄',
+            'Хай мрії стають реальністю! 🌟',
+            'Щастя вам у новому році! 🎊',
+            'Нехай кожен день буде святом! 🎁'
+        ];
+        
+        function showMessage() {
+            const message = messages[Math.floor(Math.random() * messages.length)];
+            alert(message);
+        }
+    </script>
+</body>
+</html>

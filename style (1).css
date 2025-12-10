@@ -1,0 +1,303 @@
+/* ============================================
+   SCSS Variables (CSS Custom Properties)
+   ============================================ */
+:root {
+    /* Colors */
+    --color-primary: #c41e3a;
+    --color-secondary: #165b33;
+    --color-accent: #ffd700;
+    --color-bg: #0a1128;
+    --color-text: #ffffff;
+    --color-text-secondary: #e6f7ff;
+    
+    /* Fonts */
+    --font-primary: 'Georgia', serif;
+    --font-secondary: 'Arial', sans-serif;
+    
+    /* Spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+    
+    /* Other */
+    --border-radius: 12px;
+    --transition-speed: 0.3s;
+}
+
+/* ============================================
+   Reset
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-secondary);
+    background: var(--color-bg);
+    color: var(--color-text);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* ============================================
+   BEM: page
+   ============================================ */
+.page {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page__background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(135deg, #0a1128 0%, #1a2456 50%, #0a1128 100%);
+}
+
+/* ============================================
+   BEM: snowflakes
+   ============================================ */
+.snowflakes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.snowflakes__item {
+    position: absolute;
+    top: -10px;
+    color: var(--color-text);
+    font-size: 1em;
+    opacity: 0.8;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+/* ============================================
+   BEM: container
+   ============================================ */
+.container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+}
+
+/* ============================================
+   BEM: card
+   ============================================ */
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    margin: var(--spacing-xl) auto;
+    max-width: 800px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card__header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.card__title {
+    font-family: var(--font-primary);
+    font-size: 3rem;
+    color: var(--color-accent);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: var(--spacing-sm);
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
+                     0 0 10px var(--color-accent);
+    }
+    50% {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
+                     0 0 20px var(--color-accent),
+                     0 0 30px var(--color-accent);
+    }
+}
+
+.card__subtitle {
+    font-size: 1.5rem;
+    color: var(--color-text-secondary);
+    font-weight: 300;
+}
+
+.card__content {
+    text-align: center;
+    line-height: 1.8;
+}
+
+.card__text {
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-secondary);
+}
+
+.card__decoration {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+/* ============================================
+   BEM: icon
+   ============================================ */
+.icon {
+    font-size: 2.5rem;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.icon--tree {
+    color: var(--color-secondary);
+    animation-delay: 0s;
+}
+
+.icon--gift {
+    color: var(--color-primary);
+    animation-delay: 0.3s;
+}
+
+.icon--star {
+    color: var(--color-accent);
+    animation-delay: 0.6s;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ============================================
+   BEM: wishes
+   ============================================ */
+.wishes {
+    margin-top: var(--spacing-lg);
+}
+
+.wishes__list {
+    list-style: none;
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.wishes__item {
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid var(--color-accent);
+    border-radius: 4px;
+    transition: transform var(--transition-speed);
+}
+
+.wishes__item:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   BEM: button
+   ============================================ */
+.button {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: var(--color-text);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    margin-top: var(--spacing-lg);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(196, 30, 58, 0.4);
+}
+
+.button:active {
+    transform: scale(0.98);
+}
+
+/* ============================================
+   BEM: footer
+   ============================================ */
+.footer {
+    text-align: center;
+    padding: var(--spacing-lg);
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 3;
+    margin-top: auto;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+    .card__title {
+        font-size: 2rem;
+    }
+    
+    .card__subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .card__text {
+        font-size: 1rem;
+    }
+    
+    .card {
+        padding: var(--spacing-md);
+        margin: var(--spacing-md) auto;
+    }
+}
